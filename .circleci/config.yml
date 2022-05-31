@@ -57,3 +57,4 @@ workflows:
   notify_deploy:
     jobs:
       - build
+

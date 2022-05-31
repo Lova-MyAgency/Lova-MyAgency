@@ -48,7 +48,7 @@ jobs:
       #ici# - run: php bin/console security:check
       - run: curl -L https://cs.symfony.com/download/php-cs-fixer-v2.phar -o php-cs-fixer
       - run: chmod a+x php-cs-fixer
-      - run: ./php-cs-fixer --diff --dry-run -v --allow-risky=yes fix
+      - run: tools/php-cs-fixer/vendor/bin/php-cs-fixer fix src
       - run: php -d memory_limit=-1 vendor/bin/phpstan analyse src --level max
       - run: php -d memory_limit=-1 vendor/bin/simple-phpunit
 

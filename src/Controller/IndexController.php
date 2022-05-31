@@ -12,6 +12,6 @@ class IndexController extends BaseController
      */
     public function index(): Response
     {
-        return $this->redirectToRoute('app_login');
+        return new Response();
     }
 }

@@ -1,4 +1,7 @@
 {
+    "dealerdirect/phpcodesniffer-composer-installer": {
+        "version": "v0.7.2"
+    },
     "doctrine/instantiator": {
         "version": "1.4.1"
     },
@@ -25,6 +28,9 @@
     },
     "phpspec/prophecy": {
         "version": "v1.15.0"
+    },
+    "phpstan/phpdoc-parser": {
+        "version": "1.5.1"
     },
     "phpstan/phpstan": {
         "version": "1.7.6"
@@ -117,6 +123,24 @@
     },
     "sebastian/version": {
         "version": "3.0.2"
+    },
+    "slevomat/coding-standard": {
+        "version": "7.2.1"
+    },
+    "spryker/code-sniffer": {
+        "version": "0.17.7"
+    },
+    "squizlabs/php_codesniffer": {
+        "version": "3.6",
+        "recipe": {
+            "repo": "github.com/symfony/recipes-contrib",
+            "branch": "main",
+            "version": "3.6",
+            "ref": "1019e5c08d4821cb9b77f4891f8e9c31ff20ac6f"
+        },
+        "files": [
+            "./phpcs.xml.dist"
+        ]
     },
     "symfony/cache": {
         "version": "v5.4.9"

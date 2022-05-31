@@ -53,6 +53,10 @@ jobs:
       - run: ./tools/php-cs-fixer/vendor/bin/php-cs-fixer fix src
       - run: php -d memory_limit=-1 vendor/bin/phpstan analyse src --level max
       - run: php -d memory_limit=-1 vendor/bin/simple-phpunit
+      - run: chmod a+x vendor/bin/phpcs
+      - run: chmod a+x vendor/bin/phpcbf
+      - run: ./vendor/bin/phpcs --standard=vendor/spryker/code-sniffer/Spryker/ruleset.xml ./
+      - run: ./vendor/bin/phpcbf --standard=vendor/spryker/code-sniffer/Spryker/ruleset.xml ./
 
 workflows:
   version: 2

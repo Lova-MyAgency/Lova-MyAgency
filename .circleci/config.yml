@@ -45,7 +45,7 @@ jobs:
           #ici# paths:
             #ici# - node_modules
       #ici# - run: yarn run encore test
-      - run: php bin/console security:check
+      #ici# - run: php bin/console security:check
       - run: curl -L https://cs.symfony.com/download/php-cs-fixer-v2.phar -o php-cs-fixer
       - run: chmod a+x php-cs-fixer
       - run: ./php-cs-fixer --diff --dry-run -v --allow-risky=yes fix

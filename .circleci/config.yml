@@ -44,7 +44,7 @@ jobs:
           #ici# key: node-v1-{{ checksum "package.json" }}
           #ici# paths:
             #ici# - node_modules
-      - run: yarn run encore
+      - run: yarn run
       - run: php bin/console security:check
       - run: curl -L https://cs.symfony.com/download/php-cs-fixer-v2.phar -o php-cs-fixer
       - run: chmod a+x php-cs-fixer

@@ -1,23 +1,14 @@
-name: Build
-on:
-  push:
-    branches:
-      - master # or the name of your main branch
+version: 2.1
+orbs:
+  node: circleci/node@4.7.0
 jobs:
   build:
-    name: Build
-    runs-on: ubuntu-latest
+    executor:
+      name: node/default
+      tag: '10.4'
     steps:
-      - uses: actions/checkout@v2
-        with:
-          fetch-depth: 0
-      - uses: sonarsource/sonarqube-scan-action@master
-        env:
-          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-          SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
-      # If you wish to fail your job when the Quality Gate is red, uncomment the
-      # following lines. This would typically be used to fail a deployment.
-      # - uses: sonarsource/sonarqube-quality-gate-action@master
-      #   timeout-minutes: 5
-      #   env:
-      #     SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+      - checkout
+      - node/with-cache:
+          steps:
+            - run: npm install
+      - run: npm run test

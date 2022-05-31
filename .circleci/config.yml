@@ -33,18 +33,18 @@ jobs:
           #ici# key: composer-v1-{{ checksum "composer.lock" }}
           #ici# paths:
             #ici# - vendor
-      - restore_cache: # special step to restore the dependency cache if `package.json` does not change
-          keys:
-            - node-v1-{{ checksum "package.json" }}
+      #ici# - restore_cache: # special step to restore the dependency cache if `package.json` does not change
+          #ici# keys:
+            #ici# - node-v1-{{ checksum "package.json" }}
             # fallback to using the latest cache if no exact match is found (See https://circleci.com/docs/2.0/caching/)
-            - node-v1-
+            #ici# - node-v1-
       - run: cp .env .env.local
       - run: yarn install
-      - save_cache: # special step to save the dependency cache with the `package.json` cache key template
-          key: node-v1-{{ checksum "package.json" }}
-          paths:
-            - node_modules
-      - run: yarn run encore production
+      #ici# - save_cache: # special step to save the dependency cache with the `package.json` cache key template
+          #ici# key: node-v1-{{ checksum "package.json" }}
+          #ici# paths:
+            #ici# - node_modules
+      - run: yarn run encore
       - run: php bin/console security:check
       - run: curl -L https://cs.symfony.com/download/php-cs-fixer-v2.phar -o php-cs-fixer
       - run: chmod a+x php-cs-fixer

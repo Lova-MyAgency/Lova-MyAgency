@@ -13,7 +13,7 @@ jobs:
       - image: mysql:5.7
         command: mysqld --character-set-server=utf8mb4 --collation-server=utf8mb4_bin --innodb-large-prefix=true --innodb-file-format=Barracuda
         environment:
-          # MYSQL_USER: root
+          #ici# MYSQL_USER: root
           MYSQL_ALLOW_EMPTY_PASSWORD: true
     working_directory: ~/symfony # directory where steps will run
     steps: # a set of executable commands
@@ -23,16 +23,16 @@ jobs:
       - run: sudo docker-php-ext-install zip pdo_mysql
       - run: sudo docker-php-ext-enable zip pdo_mysql
       - run: sudo composer self-update
-      - restore_cache: # special step to restore the dependency cache if `composer.lock` does not change
-          keys:
-            - composer-v1-{{ checksum "composer.lock" }}
+      #ici# - restore_cache: # special step to restore the dependency cache if `composer.lock` does not change
+          #ici# keys:
+            #ici# - composer-v1-{{ checksum "composer.lock" }}
             # fallback to using the latest cache if no exact match is found (See https://circleci.com/docs/2.0/caching/)
-            - composer-v1-
+            #ici# - composer-v1-
       - run: composer install -n --prefer-dist --no-scripts
-      - save_cache: # special step to save the dependency cache with the `composer.lock` cache key template
-          key: composer-v1-{{ checksum "composer.lock" }}
-          paths:
-            - vendor
+      #ici# - save_cache: # special step to save the dependency cache with the `composer.lock` cache key template
+          #ici# key: composer-v1-{{ checksum "composer.lock" }}
+          #ici# paths:
+            #ici# - vendor
       - restore_cache: # special step to restore the dependency cache if `package.json` does not change
           keys:
             - node-v1-{{ checksum "package.json" }}
